@@ -62,7 +62,9 @@ function App() {
             </div>
             <div><h4 id="types_text">Types:</h4></div>
             <div id="types">
-
+              {pokeData.types.map((pokeType, index) => (
+                <p className="pokemon_type" key={index} style={{ backgroundColor: typeColors[pokeType.type.name] }}>{pokeType.type.name}</p>
+              ))}
             </div>
             <div>
               <button className="button" id="prev_btn" onClick={decrementID}>&lt;</button>
@@ -72,7 +74,17 @@ function App() {
           <div id="right">
             <h2 id="stats_label">{statsText}</h2>
             <div id="poke_stats">
-
+              {statsText === "Info" ? (
+                pokeData.stats.map((pokeStats, statsIndex) => (
+                  <div key={statsIndex}></div>
+                ))
+              ) : (
+                <div id="moves_list">
+                  {pokeData.moves.map((pokeMoves, moveIndex) => (
+                    <p key={moveIndex} className="move">{pokeMoves.move.name}</p>
+                  ))}
+                </div>
+              )}
             </div>
             <div className="buttons">
               <button className={statsText === 'Info' ? 'isOn' : 'button'} id="info_btn" onClick = {() => changeInfo("Info")}>

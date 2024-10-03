@@ -61,11 +61,22 @@
 #types_text {
   text-align: left;
   color: black;
+  margin-bottom: 10px;
 }
 
 #types {
   display: flex;
   flex-direction: row;
+}
+
+.pokemon_type {
+  width: 75px;
+  height: 25px;
+  color: black;
+  border-radius: 5px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-right: 5px;
 }
 
 .button {
@@ -78,7 +89,7 @@
   background-color: rgb(236, 235, 235);
   color: black;
   font-weight: normal;
-  margin-top: 40px;
+  margin-top: 25px;
 }
 
 #right {
@@ -96,6 +107,18 @@
   width: 300px;
   height: 400px;
   background-color: rgb(236, 235, 235);
+}
+
+#moves_list {
+  overflow-y: auto;
+  max-height: 99%;
+}
+
+.move {
+  font-size: 18px;
+  color: black;
+  text-align: left;
+  margin-left: 20px;
 }
 
 .isOn {
