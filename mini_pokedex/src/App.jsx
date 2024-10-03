@@ -1,6 +1,4 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import React from 'react';
 import './App.css'
 
@@ -29,7 +27,7 @@ function App() {
     fairy: '#D685AD'
   }
 
-  const changeStatsText = (text) => {
+  const changeInfo = (text) => {
     setStatsText(text);
   };
 
@@ -52,8 +50,8 @@ function App() {
 
           </div>
           <div>
-            <button class="button" id="prev_btn" onClick={() => setId(id - 1)}>&lt;</button>
-            <button class="button" id="next_btn" onClick={() => setId(id + 1)}>&gt;</button>
+            <button className="button" id="prev_btn" onClick={() => setId((id) => id > 1 ? id - 1 : 1)}>&lt;</button>
+            <button className="button" id="next_btn" onClick={() => setCount((id) => id + 1)}>&gt;</button>
           </div>
         </div>
         <div id="right">
@@ -61,11 +59,11 @@ function App() {
           <div id="poke_stats">
 
           </div>
-          <div class="buttons">
-            <button class="button" id="info_btn" onClick = {() => changeStatsText("Info")}>
+          <div className="buttons">
+            <button className={statsText === 'Info' ? 'isOn' : 'button'} id="info_btn" onClick = {() => changeInfo("Info")}>
               Info
             </button>
-            <button class="button" id="move_btn" onClick = {() => changeStatsText("Moves")}>
+            <button className={statsText === 'Moves' ? 'isOn' : 'button'} id="move_btn" onClick = {() => changeInfo("Moves")}>
               Moves
             </button>
           </div>
@@ -74,9 +72,5 @@ function App() {
     </>
   )
 }
-/*
-  <button onClick={() => setCount((count) => count + 1)}>
-  count is {count}
-  </button>
-*/
+
 export default App
