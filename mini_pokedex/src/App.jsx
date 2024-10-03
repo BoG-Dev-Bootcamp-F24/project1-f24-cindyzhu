@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import React from 'react';
 import './App.css'
 
 function App() {
   const [id, setId] = useState(1)
   const [statsText, setStatsText] = useState("Info")
+  const [pokeData, setPokeData] = useState(null)
 
   const typeColors = {
     normal: '#A8A77A',
@@ -31,44 +32,59 @@ function App() {
     setStatsText(text);
   };
 
+  const incrementID = () => {
+    setId((id) => id + 1);
+  }
+
+  const decrementID = () => {
+    setId((id) => id > 1 ? id - 1 : 1);
+  }
+
+  useEffect(() => {
+    fetch(`https://pokeapi.co/api/v2/pokemon/${id}/`)
+      .then((res) => res.json())
+      .then((data) => setPokeData(data));
+  }), [id];
+
   return (
     <>
       <h1 id="title">
         Bits of Good Mid-Semester Project
       </h1>
+      {pokeData && (
+        <div id="screen">
+          <div id="left">
+            <div id="img_box">
+              <img id="poke_pic" src={pokeData.sprites.front_default} alt={pokeData.name}></img>
+            </div>
+            <div id="name_box">
+              <h2 id="name">{pokeData.name}</h2>
+            </div>
+            <div><h4 id="types_text">Types:</h4></div>
+            <div id="types">
 
-      <div id="screen">
-        <div id="left">
-          <div id="img_box">
-            <img id="pokepic"></img>
+            </div>
+            <div>
+              <button className="button" id="prev_btn" onClick={decrementID}>&lt;</button>
+              <button className="button" id="next_btn" onClick={incrementID}>&gt;</button>
+            </div>
           </div>
-          <div id="name_box">
-            <h2 id="name"></h2>
-          </div>
-          <div><h4 id="types_text">Types:</h4></div>
-          <div id="types">
+          <div id="right">
+            <h2 id="stats_label">{statsText}</h2>
+            <div id="poke_stats">
 
-          </div>
-          <div>
-            <button className="button" id="prev_btn" onClick={() => setId((id) => id > 1 ? id - 1 : 1)}>&lt;</button>
-            <button className="button" id="next_btn" onClick={() => setCount((id) => id + 1)}>&gt;</button>
+            </div>
+            <div className="buttons">
+              <button className={statsText === 'Info' ? 'isOn' : 'button'} id="info_btn" onClick = {() => changeInfo("Info")}>
+                Info
+              </button>
+              <button className={statsText === 'Moves' ? 'isOn' : 'button'} id="move_btn" onClick = {() => changeInfo("Moves")}>
+                Moves
+              </button>
+            </div>
           </div>
         </div>
-        <div id="right">
-          <h2 id="stats_label">{statsText}</h2>
-          <div id="poke_stats">
-
-          </div>
-          <div className="buttons">
-            <button className={statsText === 'Info' ? 'isOn' : 'button'} id="info_btn" onClick = {() => changeInfo("Info")}>
-              Info
-            </button>
-            <button className={statsText === 'Moves' ? 'isOn' : 'button'} id="move_btn" onClick = {() => changeInfo("Moves")}>
-              Moves
-            </button>
-          </div>
-        </div>
-      </div>
+      )}
     </>
   )
 }
