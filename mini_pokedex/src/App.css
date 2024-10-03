@@ -47,7 +47,7 @@
   border-width: 1px;
   border-color: black;
   margin-top: 20px;
-  border-radius: 10px;
+  border-radius: 7px;
   background-color: rgb(236, 235, 235);
   align-items: center;
 }
@@ -107,23 +107,25 @@
   width: 300px;
   height: 400px;
   background-color: rgb(236, 235, 235);
+  overflow-y: auto;
+  max-height: 57%;
+  padding: 30px;
 }
 
 .stats_info {
   color: black;
-  font-size: 18px;
-}
-
-#moves_list {
-  overflow-y: auto;
-  max-height: 99%;
+  font-size: 24px;
+  text-align: left;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 .move {
-  font-size: 18px;
+  font-size: 24px;
   color: black;
   text-align: left;
-  margin-left: 20px;
+  margin-top: 0px;
+  margin-bottom: 0px;
 }
 
 .isOn {

@@ -33,11 +33,11 @@ function App() {
   };
 
   const incrementID = () => {
-    setId((id) => id + 1);
+    setId((id) => id < 1025 ? id + 1 : 1);
   }
 
   const decrementID = () => {
-    setId((id) => id > 1 ? id - 1 : 1);
+    setId((id) => id > 1 ? id - 1 : 1025);
   }
 
   useEffect(() => {
@@ -75,15 +75,17 @@ function App() {
             <h2 id="stats_label">{statsText}</h2>
             <div id="poke_stats">
               {statsText === "Info" ? (
-                pokeData.stats.map((pokeStats, statsIndex) => (
-                  <p key={statsIndex} className="stats_info"></p>
-                ))
-              ) : (
-                <div id="moves_list">
-                  {pokeData.moves.map((pokeMoves, moveIndex) => (
-                    <p key={moveIndex} className="move">{pokeMoves.move.name}</p>
+                <div>
+                  <p className='stats_info'>height: {(pokeData.height * 0.1).toFixed(1)}m</p>
+                  <p className='stats_info'>weight: {(pokeData.weight * 0.1).toFixed(1)}kg</p>
+                  {pokeData.stats.map((statsInfo, statsIndex) => (
+                    <p key={statsIndex} className="stats_info">{statsInfo.stat.name}: {statsInfo.base_stat}</p>
                   ))}
                 </div>
+              ) : (
+                pokeData.moves.map((pokeMoves, moveIndex) => (
+                  <p key={moveIndex} className="move">{pokeMoves.move.name}</p>
+                ))
               )}
             </div>
             <div className="buttons">
