@@ -10,6 +10,7 @@
   font-size: 40px;
   text-align: center;
   color: black;
+  margin-block-end: 10px;
 }
 
 #screen {
@@ -30,6 +31,8 @@
   border-style: solid;
   border-width: 3px;
   border-color: black;
+  justify-content: center;
+  margin-block-start: 20px;
 }
 
 #name_box {
@@ -58,7 +61,7 @@
   background-color: rgb(236, 235, 235);
   color: black;
   font-weight: normal;
-  margin-top: 20px;
+  margin-top: 40px;
 }
 
 #right {
@@ -68,6 +71,8 @@
 
 #stats_label {
   color: black;
+  margin-block-start: 0px;
+  margin-block-end: 20px;
 }
 
 #poke_stats {

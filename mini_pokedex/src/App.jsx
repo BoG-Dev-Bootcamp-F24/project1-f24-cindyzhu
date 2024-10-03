@@ -5,6 +5,8 @@ import React from 'react';
 import './App.css'
 
 function App() {
+  const [id, setId] = useState(1)
+  const [statsText, setStatsText] = useState("Info")
 
   const typeColors = {
     normal: '#A8A77A',
@@ -27,6 +29,10 @@ function App() {
     fairy: '#D685AD'
   }
 
+  const changeStatsText = (text) => {
+    setStatsText(text);
+  };
+
   return (
     <>
       <h1 id="title">
@@ -46,18 +52,22 @@ function App() {
 
           </div>
           <div>
-            <button class="button" id="prev_btn" onClick={() => id}>&lt;</button>
-            <button class="button" id="next_btn">&gt;</button>
+            <button class="button" id="prev_btn" onClick={() => setId(id - 1)}>&lt;</button>
+            <button class="button" id="next_btn" onClick={() => setId(id + 1)}>&gt;</button>
           </div>
         </div>
         <div id="right">
-          <h2 id="stats_label">Info</h2>
+          <h2 id="stats_label">{statsText}</h2>
           <div id="poke_stats">
 
           </div>
           <div class="buttons">
-            <button class="button" id="info_btn">Info</button>
-            <button class="button" id="move_btn">Moves</button>
+            <button class="button" id="info_btn" onClick = {() => changeStatsText("Info")}>
+              Info
+            </button>
+            <button class="button" id="move_btn" onClick = {() => changeStatsText("Moves")}>
+              Moves
+            </button>
           </div>
         </div>
       </div>
