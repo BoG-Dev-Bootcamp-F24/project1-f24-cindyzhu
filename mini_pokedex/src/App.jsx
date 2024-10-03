@@ -76,7 +76,7 @@ function App() {
             <div id="poke_stats">
               {statsText === "Info" ? (
                 pokeData.stats.map((pokeStats, statsIndex) => (
-                  <div key={statsIndex}></div>
+                  <p key={statsIndex} className="stats_info"></p>
                 ))
               ) : (
                 <div id="moves_list">

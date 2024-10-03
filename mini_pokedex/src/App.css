@@ -109,6 +109,11 @@
   background-color: rgb(236, 235, 235);
 }
 
+.stats_info {
+  color: black;
+  font-size: 18px;
+}
+
 #moves_list {
   overflow-y: auto;
   max-height: 99%;
