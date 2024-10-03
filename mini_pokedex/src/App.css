@@ -16,8 +16,8 @@
 #screen {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
-  width: 1000px;
+  justify-content: space-around;
+  width: 900px;
 }
 
 #left {
@@ -89,7 +89,7 @@
   background-color: rgb(236, 235, 235);
   color: black;
   font-weight: normal;
-  margin-top: 25px;
+  margin-top: 40px;
 }
 
 #right {
@@ -104,7 +104,7 @@
 }
 
 #poke_stats {
-  width: 300px;
+  width: 280px;
   height: 400px;
   background-color: rgb(236, 235, 235);
   overflow-y: auto;
@@ -138,5 +138,5 @@
   font-size: 24px;
   font-weight: normal;
   color: black;
-  margin-top: 40px;
+  margin-top: 47px;
 }

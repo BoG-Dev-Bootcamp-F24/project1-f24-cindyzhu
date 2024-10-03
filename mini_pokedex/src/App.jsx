@@ -6,6 +6,7 @@ function App() {
   const [id, setId] = useState(1)
   const [statsText, setStatsText] = useState("Info")
   const [pokeData, setPokeData] = useState(null)
+  const [isInfoBox, setIsInfoBox] = useState(true)
 
   const typeColors = {
     normal: '#A8A77A',
@@ -28,8 +29,9 @@ function App() {
     fairy: '#D685AD'
   }
 
-  const changeInfo = (text) => {
+  const changeInfo = (text, isInfo) => {
     setStatsText(text);
+    setIsInfoBox(isInfo);
   };
 
   const incrementID = () => {
@@ -74,7 +76,7 @@ function App() {
           <div id="right">
             <h2 id="stats_label">{statsText}</h2>
             <div id="poke_stats">
-              {statsText === "Info" ? (
+              {isInfoBox ? (
                 <div>
                   <p className='stats_info'>height: {(pokeData.height * 0.1).toFixed(1)}m</p>
                   <p className='stats_info'>weight: {(pokeData.weight * 0.1).toFixed(1)}kg</p>
@@ -89,10 +91,10 @@ function App() {
               )}
             </div>
             <div className="buttons">
-              <button className={statsText === 'Info' ? 'isOn' : 'button'} id="info_btn" onClick = {() => changeInfo("Info")}>
+              <button className={isInfoBox ? 'isOn' : 'button'} id="info_btn" onClick = {() => changeInfo("Info", true)}>
                 Info
               </button>
-              <button className={statsText === 'Moves' ? 'isOn' : 'button'} id="move_btn" onClick = {() => changeInfo("Moves")}>
+              <button className={!isInfoBox ? 'isOn' : 'button'} id="move_btn" onClick = {() => changeInfo("Moves", false)}>
                 Moves
               </button>
             </div>
